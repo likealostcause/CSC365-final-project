@@ -1,0 +1,24 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "Final project for CSC 365: a website with 3 pages, using one API to get some data, and the Twitter API to share that data to a user's Twitter account",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/likealostcause/CSC365-final-project.git"
+  },
+  "keywords": [
+    "\"Twitter",
+    "API\""
+  ],
+  "author": "John Willis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/likealostcause/CSC365-final-project/issues"
+  },
+  "homepage": "https://github.com/likealostcause/CSC365-final-project#readme"
+}
