@@ -16,6 +16,7 @@ app.get('/', function(req, res) {
 
 app.get('/music', function(req, res) {
 	//following code taken from Spotify's Git repo: https://github.com/spotify/web-api-auth-examples/blob/master/client_credentials/app.js
+	console.log('Get request for /music received.');
 	let authOptions = {
 		url: 'https://accounts.spotify.com/api/token',
 		headers: {
@@ -45,10 +46,10 @@ app.get('/music', function(req, res) {
 			json: true
 		};
 		request.get(options, function(geterror, getres, getbody) {
-			console.log(getbody);
+			res.send(getbody);
+			console.log(`sending response for ${getbody.external_urls.spotify}`);
 		});
 	});
-	res.send('base/music pinged successfully');
 });
 
 const server = app.listen(3000, function() {
