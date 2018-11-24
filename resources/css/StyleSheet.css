@@ -27,7 +27,6 @@ ul.navBar {
 }
 .navBar li {
 	display: inline;
-	float: left;
 }
 .navBar li a {
 	text-align: center;
