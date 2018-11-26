@@ -2,8 +2,8 @@
 
 const express = require('express'),
 	app = express(),
-	request = require('request'),
-	spotifyCredentials = require('./resources/spotify_credentials.json');
+	request = require('request');
+	//spotifyCredentials = require('./resources/spotify_credentials.json');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');

@@ -10,12 +10,13 @@ tan: #e0dec2
 body {
 	font-family: 'Avenir', Verdana, Helvetica, sans-serif;
 	margin: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .navBar {
 	background-color: #050707;
 	opacity: 0.75;
-	overflow: auto;
 	position: absolute;
 	width: 100%;
 }
@@ -24,6 +25,7 @@ ul.navBar {
 	list-style-type: none;
 	height: 40px;
 	text-align: left;
+	padding-bottom: 20px;
 }
 .navBar li {
 	display: inline;
@@ -32,10 +34,11 @@ ul.navBar {
 	text-align: center;
 	line-height: 19px;
 	padding-left: 10px;
-	padding-right: 10px;
+	padding-right: 20px;
 	color: #f2f2f2;
 	text-decoration: none;
-	font-size: 18px;
+	font-size: 20px;
+	font-weight: bold;
 }
 .navBar a:hover {
 	color: #dbb359;
@@ -43,6 +46,7 @@ ul.navBar {
 
 #logo img {
 	max-height: 40px;
+	padding-top: 10px;
 }
 
 img {
@@ -52,9 +56,15 @@ img {
 }
 #servicesContainer ul {
 	list-style-type: none;
+	align-items: center;
 }
 #servicesContainer {
-	display: flex;
+	display: inline-flex;
+	width: 100%;
+	padding-left: 20%;
 	text-align: center;
 	background-image: linear-gradient(#bdddc7, #ffffff);
+}
+.ugly {
+	padding-left: 25%;
 }
