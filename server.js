@@ -14,6 +14,12 @@ app.get('/', function(req, res) {
 	res.render('homepage');
 });
 
+app.get('/login', function(req, res) {
+	res.render('login');
+});
+
+// app.post('/login'), function
+
 app.get('/music', function(req, res) {
 	//following code taken from Spotify's Git repo: https://github.com/spotify/web-api-auth-examples/blob/master/client_credentials/app.js
 	console.log('Get request for /music received.');

@@ -147,3 +147,10 @@ img {
 	max-height: 100%;
 	object-fit: contain;
 }
+
+.loginContainer {
+	padding-top: 50px;
+}
+.loginContainer img {
+	position: relative;
+}
