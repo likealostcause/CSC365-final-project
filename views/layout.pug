@@ -7,18 +7,12 @@ html
     body
         div.navBar
             span.navBarLeft
-                ul
-                    li  
-                        a(href='/login') Sign in
-                    li
-                        a(href='/create-account') Join the Ope! Community
+                a(href='/')
+                    img#logo(src='images/logos/ope_white.png')
+            a(href='/artists') Artists
+            a(href='/services') Services
+                
             span.navBarRight
-                ul
-                    li
-                        a(href='/services') Services
-                    li
-                        a(href='/artists') Artists
-                    li
-                        a#logo(href='/')
-                            img(src='images/logos/ope_white.png')
+                a(href='/login') Log in
+                a(href='/create-account') Join our Community
         block content

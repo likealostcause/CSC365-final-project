@@ -7,6 +7,7 @@ blue: #30334d
 tan: #e0dec2
 photo grey: #f5f5f5
 */
+/* we should totally use an image hover overlay: https://www.w3schools.com/css/css3_images.asp*/
 
 body {
 	background-color: #f5f5f5;
@@ -62,6 +63,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: cover;
+	filter: blur(10px);
 	height: 100vh;
 	width: 100vw;
 	/* scroll-snap-align: start; */
@@ -107,40 +109,37 @@ body {
 	height: 50px;
 	width: 100%;
 	position: absolute;
+	overflow: hidden;
 }
 
 .navBarRight {
 	text-align: right;
+	float: right;
 }
 
 .navBarLeft {
+	float: left;
 	text-align: left;
 }
 
-.navBar ul {
-	margin-top: 0px;
-	list-style-type: none;
-}
-.navBar li {
-	display: inline;
-}
-.navBar li a {
+.navBar a {
 	text-align: center;
-	line-height: 19px;
+	line-height: 50px;
 	padding-left: 10px;
 	padding-right: 20px;
 	color: #f2f2f2;
 	text-decoration: none;
 	font-size: 20px;
-	font-weight: bold;
 }
+
 .navBar a:hover {
 	color: #dbb359;
 }
 
-#logo img {
+#logo {
 	max-height: 40px;
-	padding-top: 10px;
+	max-width: 70px;
+	padding-top: 8px;
 }
 
 img {
