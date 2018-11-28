@@ -5,42 +5,48 @@ red: #d54a4d
 yellow: #dbb359
 blue: #30334d
 tan: #e0dec2
+photo grey: #f5f5f5
 */
 
 body {
+	background-color: #f5f5f5;
 	font-family: 'Avenir', Verdana, Helvetica, sans-serif;
 	margin: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
-	scroll-snap-type: y mandatory;
-}
-.container {
-	background: url("../images/tv_cropped.jpg") repeat;
-	background-size: cover;
-	height: 100vh;
-	width: 100vw;
+	/* scroll-snap-type: y mandatory; */
 }
 
 .aside {
-	background-color: #050707;
-	color: white;
-	opacity: 0.75;
+	/* background-color: #050707; */
+	color: black;
+	/* opacity: 0.75; */
 	height: 160px;
-	margin-top: 377px;
 	text-align: center;
+	font-size: 40px;
+	padding-top: 15px;
 }
 
-#homeOne {
-	scroll-snap-align: start;
-	color: black;
-	font-weight: bold;
+#headerImage {
+	/* background: url('../images/tv_cropped.jpg') repeat;
+	background-size: 100%, 600px;
+	background-repeat: no-repeat; */
+	/* scroll-snap-align: start; */
+	color: white;
+	/* font-weight: bold; */
 	font-size: 40px;
-  -webkit-text-fill-color: white;
+	/* -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: black; */
+}
+#homeOne img {
+	height: 25%;
+	width: 100%;
+	object-fit: cover;
 }
 .joinButton {
-	color: #bdddc7;
+	background-color: black;
+	color: white;
 	font-size: 18px;
 	height: 40px;
 	width: 200px;
@@ -51,27 +57,29 @@ body {
 	padding-top: 15%;
 }
 
-
 #homeTwo {
-	background: url("../images/background/A0A7134-R1-02-00A.jpg");
+	background: url('../images/background/A0A7134-R1-02-00A.jpg');
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: cover;
 	height: 100vh;
 	width: 100vw;
-	scroll-snap-align: start;
+	/* scroll-snap-align: start; */
 	color: #050707;
 	padding-left: 30px;
 	padding-top: 75px;
 	font-size: 24px;
+	margin-top: 75px;
 }
 .bold {
 	font-weight: bold;
+	width: 38%;
 }
 
 .italic {
 	padding-top: 40px;
 	font-style: italic;
+	width: 38%;
 }
 
 .list {
@@ -90,21 +98,28 @@ body {
 	background-color: #e0dec2;
 	height: 100vh;
 	width: 100vw;
-	scroll-snap-align: start;
+	/* scroll-snap-align: start; */
 }
 
 .navBar {
 	background-color: #050707;
 	opacity: 0.75;
-	position: absolute;
+	height: 50px;
 	width: 100%;
+	position: absolute;
 }
-ul.navBar {
+
+.navBarRight {
+	text-align: right;
+}
+
+.navBarLeft {
+	text-align: left;
+}
+
+.navBar ul {
 	margin-top: 0px;
 	list-style-type: none;
-	height: 40px;
-	text-align: left;
-	padding-bottom: 20px;
 }
 .navBar li {
 	display: inline;
@@ -131,5 +146,5 @@ ul.navBar {
 img {
 	max-width: 100%;
 	max-height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 }

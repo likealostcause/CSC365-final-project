@@ -5,12 +5,20 @@ html
         meta(charset="UTF-8")
         link(href="/css/StyleSheet.css", rel="stylesheet")
     body
-        ul.navBar 
-            li
-                a#logo(href='/')
-                    img(src='images/logos/ope_white.png')
-            li
-                a(href='/artists') Artists
-            li
-                a(href='/services') Services
+        div.navBar
+            span.navBarLeft
+                ul
+                    li  
+                        a(href='/login') Sign in
+                    li
+                        a(href='/create-account') Join the Ope! Community
+            span.navBarRight
+                ul
+                    li
+                        a(href='/services') Services
+                    li
+                        a(href='/artists') Artists
+                    li
+                        a#logo(href='/')
+                            img(src='images/logos/ope_white.png')
         block content
