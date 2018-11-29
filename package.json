@@ -1,30 +1,41 @@
 {
-  "name": "final_project",
-  "version": "1.0.0",
-  "description": "Final project for CSC 365: a website with 3 pages, using one API to get some data, and the Twitter API to share that data to a user's Twitter account",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/likealostcause/CSC365-final-project.git"
-  },
-  "keywords": [
-    "\"Twitter",
-    "API\""
-  ],
-  "author": "John Willis",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/likealostcause/CSC365-final-project/issues"
-  },
-  "homepage": "https://github.com/likealostcause/CSC365-final-project#readme",
-  "dependencies": {
-    "express": "^4.16.4",
-    "nodemon": "^1.18.6",
-    "pug": "^2.0.3",
-    "request": "^2.88.0"
-  }
+	"name": "final_project",
+	"version": "1.0.0",
+	"description": "Final project for CSC 365: a website with 3 pages, using one API to get some data, and the Twitter API to share that data to a user's Twitter account",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/likealostcause/CSC365-final-project.git"
+	},
+	"keywords": [
+		"\"Twitter",
+		"API\""
+	],
+	"author": "John Willis",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/likealostcause/CSC365-final-project/issues"
+	},
+	"homepage": "https://github.com/likealostcause/CSC365-final-project#readme",
+	"dependencies": {
+		"bcrypt": "^3.0.2",
+		"connect-ensure-login": "^0.1.1",
+		"connect-flash": "^0.1.1",
+		"cookie-parser": "^1.4.3",
+		"express": "^4.16.4",
+		"express-session": "^1.15.6",
+		"mongoose": "^5.3.14",
+		"nodemon": "^1.18.6",
+		"passport": "^0.4.0",
+		"passport-facebook": "^2.1.1",
+		"passport-google-oauth": "^1.0.0",
+		"passport-local": "^1.0.0",
+		"passport-twitter": "^1.0.4",
+		"pug": "^2.0.3",
+		"request": "^2.88.0"
+	}
 }
