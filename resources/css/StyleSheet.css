@@ -116,6 +116,10 @@ body {
 	/* scroll-snap-align: start; */
 }
 
+#homeThree h1 {
+	margin: 0;
+}
+
 #homeFour {
 	background: linear-gradient(90deg, #dbe2dd, #b1b5a4);
 }
