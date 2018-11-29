@@ -26,6 +26,7 @@ body {
 	text-align: center;
 	font-size: 40px;
 	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 #headerImage {
@@ -71,7 +72,6 @@ body {
 	padding-left: 30px;
 	padding-top: 75px;
 	font-size: 24px;
-	margin-top: 75px;
 }
 .bold {
 	font-weight: bold;
@@ -88,17 +88,27 @@ body {
 	padding-top: 20px;
 }
 
+.list h2 {
+	padding-top: 10px;
+	margin: 0;
+}
+
 .list ul {
+	margin: 0;
 	width: 33%;
 }
 
+.list li:first-child {
+	padding-top: 7px;
+	width: 101%;
+}
 .list li {
-	padding-top: 30px;
+	padding-top: 15px;
 }
 
 #homeThree {
 	text-align: center;
-	background: url('../images/img060_022.jpg');
+	background: url('../images/img055_017.jpg');
 	height: 100vh;
 	width: 100%;
 	background-position: bottom;
