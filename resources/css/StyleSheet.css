@@ -111,7 +111,7 @@ body {
 }
 
 #bioQuote {
-	text=align: center;
+	text-align: center;
 	width: 65%;
 	margin-left: 20%;
 	padding: 10px;
