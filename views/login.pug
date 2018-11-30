@@ -1,14 +1,13 @@
 extends layout
 block content
-  if error
-    .alert.alert-danger=error
-  div(class="form-popup" id="myForm")
-    form(class="form-container", method="post", action="/login")
-      h1 LOGIN
-      label(for="Username") <b>Username</b>
-      input(placeholder="Enter Username", name="username", type="text")
-        
-      label(for="psw") <b>Password</b>
-      input(type="password", placeholder="Enter Password", name="password", required)
-        
-      button(type="submit", class="btn") Login
+    .loginContainer
+        form(method='POST', action='/login')
+            .formElement
+                label(for='email') Email:
+                input(type='email', name='email')
+            .formElement 
+                label(for='password') Password:
+                input(type='password', name='password')
+            button.formSubmit(type='submit') Log in with Email
+            div OR
+            a#abtn(href='/login/facebook') Log in with Facebook

@@ -1,6 +1,7 @@
 #Custom:
 .DS_Store
 spotify_credentials.json
+config/auth.js
 
 #From GitHub's Node .gitignore
 # Logs
