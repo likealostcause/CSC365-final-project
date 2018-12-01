@@ -3,7 +3,7 @@
 const express = require('express'),
 	app = express(),
 	request = require('request'),
-	spotifyCredentials = require('./resources/spotify_credentials.json');
+	auth = require('./config/auth.js');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
@@ -28,9 +28,9 @@ app.get('/music', function(req, res) {
 		headers: {
 			Authorization:
 				'Basic ' +
-				Buffer.from(
-					spotifyCredentials.clientID + ':' + spotifyCredentials.clientSecret
-				).toString('base64')
+				Buffer.from(auth.spotify.id + ':' + auth.spotify.secret).toString(
+					'base64'
+				)
 		},
 		form: {
 			grant_type: 'client_credentials'
