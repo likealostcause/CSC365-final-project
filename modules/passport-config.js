@@ -12,7 +12,7 @@ let passportSettings = function(passport) {
 				callbackURL: 'http://localhost:3000/login/facebook/return'
 			},
 			function(accessToken, refreshToken, profile, done) {
-				console.log(profile);
+				//console.log(profile);
 				return done(null, profile);
 			}
 		)
@@ -26,7 +26,7 @@ let passportSettings = function(passport) {
 				callbackURL: 'http://localhost:3000/login/twitter/return'
 			},
 			function(token, tokenSecret, profile, done) {
-				console.log('Twitter:', profile);
+				//console.log('Twitter:', profile);
 				return done(null, profile);
 			}
 		)

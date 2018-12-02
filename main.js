@@ -3,7 +3,7 @@
 const express = require('express'),
 	app = express(),
 	request = require('request'),
-	auth = require('./resources/modules/auth.js'),
+	auth = require('./modules/auth.js'),
 	passport = require('passport'),
 	cookieParser = require('cookie-parser'),
 	session = require('express-session'),
@@ -29,7 +29,7 @@ app.use(
 );
 
 //bring in passport middleware from our config module
-require('./resources/modules/passport-config.js')(passport);
+require('./modules/passport-config.js')(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -128,7 +128,7 @@ app.get('/get-music', function(req, res) {
 		};
 		request.get(options, function(geterror, getres, getbody) {
 			res.json(getbody);
-			console.log(getbody);
+			//console.log(getbody);
 		});
 	});
 });
@@ -142,14 +142,14 @@ app.post('/tweet', function(req, res) {
 	});
 	let spotifyURL = req.body.spotifyUrl;
 	let contents = `Check out this track I just discovered at operecords.com!\n ${spotifyURL}`;
-	console.log('tweet data:', spotifyURL);
+	//console.log('tweet data:', spotifyURL);
 	twitterClient.post('statuses/update', { status: contents }, function(
 		error,
 		tweet,
 		response
 	) {
 		if (!error) {
-			console.log(tweet);
+			//console.log(tweet);
 		} else {
 			console.log(error);
 		}
