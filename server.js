@@ -3,18 +3,15 @@
 const express = require('express'),
 	app = express(),
 	request = require('request'),
-	auth = require('./config/auth.js'),
+	auth = require('./resources/modules/auth.js'),
 	passport = require('passport'),
-	FBStrategy = require('passport-facebook'),
 	cookieParser = require('cookie-parser'),
 	session = require('express-session'),
-	TwitterStrategy = require('passport-twitter'),
 	Twitter = require('twitter');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
-//middleware configuration
 app.use(express.static('resources'));
 app.use(cookieParser()); //read cookies
 app.use(express.json()); // for parsing application/json
@@ -30,41 +27,9 @@ app.use(
 		resave: false
 	})
 );
-passport.use(
-	new FBStrategy(
-		{
-			clientID: auth.facebook.id,
-			clientSecret: auth.facebook.secret,
-			callbackURL: 'http://localhost:3000/login/facebook/return'
-		},
-		function(accessToken, refreshToken, profile, done) {
-			console.log(profile);
-			return done(null, profile);
-		}
-	)
-);
 
-passport.use(
-	new TwitterStrategy(
-		{
-			consumerKey: auth.twitter.id,
-			consumerSecret: auth.twitter.secret,
-			callbackURL: 'http://localhost:3000/login/twitter/return'
-		},
-		function(token, tokenSecret, profile, done) {
-			console.log('Twitter:', profile);
-			return done(null, profile);
-		}
-	)
-);
-
-passport.serializeUser(function(user, cb) {
-	cb(null, user);
-});
-
-passport.deserializeUser(function(obj, cb) {
-	cb(null, obj);
-});
+//bring in passport middleware from our config module
+require('./resources/modules/passport-config.js')(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());
