@@ -1,14 +1,23 @@
 extends layout
 block content
-  div Hello world
-  div
-    table
-      tr 
-        th Name
-        th Song Name 
-        th Tweet 
-      tr 
-        td ArtistName
-        td SongName
-        td
-          a tweet
+  .servicesContainer
+    .musicTableContainer
+      div
+        form(id="musicInfo")
+          input(type="number", placeholder="Number of Tracks you would like.", name="numberOfTracks")
+          button(type="submit",id="getMusicBtn") Get Music
+        table
+          tr 
+            th Name
+            th Song Name 
+            th Tweet 
+          tr 
+            td ArtistName
+            td SongName
+            td
+              a tweet
+          tr
+            td Nathan
+            td songSong
+            td
+              a tweet
