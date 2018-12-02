@@ -21,7 +21,7 @@ const getTracks = function(numTracks) {
 	xhr.open('GET', '/get-music?numTracks=' + numTracks);
 
 	xhr.addEventListener('load', function() {
-
+		resetTable();
 		const spotifyInfo = JSON.parse(xhr.response);
 		//loop over received data and dynamically add tracks to table
 		spotifyInfo.tracks.forEach(function(trackInfo) {
@@ -61,6 +61,36 @@ const getTracks = function(numTracks) {
 	});
 
 	xhr.send();
+};
+
+const resetTable = function() {
+	let newTable = document.createElement('table');
+	newTable.id = 'dataTable';
+	let newTr = document.createElement('tr');
+	let newThName = document.createElement('th');
+	newThName.id = 'name';
+	let newThTrack = document.createElement('th');
+	newThTrack.id = 'track';
+	let newThTweet = document.createElement('th');
+	newThTweet.id = 'tweetBtn';
+
+	let textName = document.createTextNode("Name");
+	newThName.appendChild(textName);
+	newTr.appendChild(newThName);
+
+	let textTrack = document.createTextNode("Track Name");
+	newThTrack.appendChild(textTrack);
+	newTr.appendChild(newThTrack);
+
+	let textTweet = document.createTextNode("Tweet");
+	newThTweet.appendChild(textTweet);
+	newTr.appendChild(newThTweet);
+
+	newTable.appendChild(newTr);
+
+	let oldTable = document.querySelector('#dataTable');
+	oldTable.parentNode.replaceChild(newTable, oldTable);
+
 };
 
 document.querySelector('#musicInfo').addEventListener('submit', function(evt) {
