@@ -65,8 +65,8 @@ app.get('/services', function(req, res) {
 	}
 	//If not logged in, send to login page, which redirects to services when login complete
 	else {
-		res.render('services');
-		//res.redirect('/login');
+		//res.render('services');
+		res.redirect('/login');
 	}
 });
 

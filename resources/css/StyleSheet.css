@@ -281,10 +281,13 @@ tr:nth-child(even){
 	color: #dbb359;
 }
 
+
+
 #logo {
 	max-height: 40px;
 	max-width: 70px;
 	padding-top: 8px;
+	opacity: 1.0;
 }
 
 img {
