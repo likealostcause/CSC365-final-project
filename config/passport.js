@@ -2,7 +2,7 @@
 
 const LocalStrategy = require('passport-local').Strategy,
 	FBStrategy = require('passport-facebook').Strategy,
-	auth = require('./auth.js'),
+	auth = require('../resources/modules/auth.js'),
 	User = require('../resources/modules/mongoDB_userModel.js');
 
 let localStrategies = function(passport) {
