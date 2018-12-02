@@ -1,13 +1,6 @@
 extends layout
 block content
-    .loginContainer
-        form(method='POST', action='/login')
-            .formElement
-                label(for='email') Email:
-                input(type='email', name='email')
-            .formElement 
-                label(for='password') Password:
-                input(type='password', name='password')
-            button.formSubmit(type='submit') Log in with Email
-            div OR
-            a(class="loginBtn loginBtn--facebook" href='/login/facebook') Login with Facebook
+  .backgroundContainer
+      .loginContainer
+        .loginTitle Login with Facebook to connect to Ope!
+        a(class="loginBtn loginBtn--facebook" href='/login/facebook') Login with Facebook
