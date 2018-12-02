@@ -47,8 +47,8 @@ passport.use(
 passport.use(
 	new TwitterStrategy(
 		{
-			consumerKey: 'YHQkGZmv74mj4z2D5d02TArbC', //auth.twitter.id,
-			consumerSecret: 'RWwOShQU9n6XW1sLu0Pj2o1ZJix370VNMxlPzssbFX1aoSgLI3', //auth.twitter.secret,
+			consumerKey: auth.twitter.id,
+			consumerSecret: auth.twitter.secret,
 			callbackURL: 'http://localhost:3000/login/twitter/return'
 		},
 		function(token, tokenSecret, profile, done) {
