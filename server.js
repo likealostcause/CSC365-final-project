@@ -95,6 +95,51 @@ app.get(
 );
 // app.post('/login'), function
 
+app.get('/get-music', function(req, res) {
+	const numTracks = req.query.numTracks;
+	//consider putting the following in a function exported from auth.js
+	let authOptions = {
+		url: 'https://accounts.spotify.com/api/token',
+		headers: {
+			Authorization:
+				'Basic ' +
+				Buffer.from(auth.spotify.id + ':' + auth.spotify.secret).toString(
+					'base64'
+				)
+		},
+		form: {
+			grant_type: 'client_credentials'
+		},
+		json: true
+	};
+	//the request to Spotify API
+	request.post(authOptions, function(posterror, postres, postbody) {
+		let myToken = postbody.access_token;
+		//default is 20, min is 1, max is 100
+		let numTrackSpecs = 'limit=' + numTracks;
+		let hudsonID = '6k3W2iGuRZrhUnfVZOMQo8';
+		let twoeighteenID = '1fiW6Ylz67yzs1FAEauE4T';
+		let joedID = '0SJKqA3TnDq8Cc23GuRevM';
+		let artistSeed = hudsonID + ',' + twoeighteenID + ',' + joedID;
+		let artistSpecs = 'seed_artists=' + artistSeed;
+		let options = {
+			url:
+				'https://api.spotify.com/v1/recommendations?' +
+				numTrackSpecs +
+				'&' +
+				artistSpecs,
+			headers: {
+				Authorization: 'Bearer ' + myToken
+			},
+			json: true
+		};
+		request.get(options, function(geterror, getres, getbody) {
+			res.json(getbody);
+			console.log(getbody);
+		});
+	});
+});
+
 app.get('/music', function(req, res) {
 	//following code taken from Spotify's Git repo: https://github.com/spotify/web-api-auth-examples/blob/master/client_credentials/app.js
 	console.log('Get request for /music received.');
