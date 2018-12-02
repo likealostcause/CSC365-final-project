@@ -4,11 +4,11 @@ block content
     .musicTableContainer
       div
         form(id="musicInfo")
-          input(type="number", id="input", placeholder="Number of Tracks you would like", name="numTracks")
+          input(type="number", id="input", placeholder="Number of Tracks you would like.(max 15)", name="numTracks")
           button(type="submit", id="getMusicBtn") Get Music 
         table#dataTable
           tr 
             th#name Name
             th#track Track Name 
             th#tweetBtn Tweet 
-  script(src='/js/ajax.js')
+  script(src='/js/ajaxTwitter.js')
