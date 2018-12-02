@@ -8,6 +8,7 @@ const express = require('express'),
 	FBStrategy = require('passport-facebook'),
 	cookieParser = require('cookie-parser'),
 	session = require('express-session'),
+	TwitterStrategy = require('passport-twitter'),
 	Twitter = require('twitter');
 
 app.set('view engine', 'pug');
@@ -38,6 +39,20 @@ passport.use(
 		},
 		function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
+			return done(null, profile);
+		}
+	)
+);
+
+passport.use(
+	new TwitterStrategy(
+		{
+			consumerKey: 'YHQkGZmv74mj4z2D5d02TArbC', //auth.twitter.id,
+			consumerSecret: 'RWwOShQU9n6XW1sLu0Pj2o1ZJix370VNMxlPzssbFX1aoSgLI3', //auth.twitter.secret,
+			callbackURL: 'http://localhost:3000/login/twitter/return'
+		},
+		function(token, tokenSecret, profile, done) {
+			console.log('Twitter:', profile);
 			return done(null, profile);
 		}
 	)
@@ -95,7 +110,18 @@ app.get(
 		res.redirect('/services');
 	}
 );
-// app.post('/login'), function
+
+app.get('/login/twitter', passport.authenticate('twitter'));
+
+app.get(
+	'/login/twitter/return',
+	passport.authenticate('twitter', {
+		failureRedirect: '/login'
+	}),
+	function(req, res) {
+		res.redirect('/services');
+	}
+);
 
 app.get('/get-music', function(req, res) {
 	const numTracks = req.query.numTracks;
@@ -150,17 +176,20 @@ app.post('/tweet', function(req, res) {
 		access_token_secret: auth.twitter.token_secret
 	});
 	let spotifyURL = req.body.spotifyUrl;
-	let contents = 'Check out this track I just discovered at operecords.com!';
+	let contents = `Check out this track I just discovered at operecords.com!\n ${spotifyURL}`;
 	console.log('tweet data:', spotifyURL);
-	twitterClient.post(
-		'statuses/update',
-		{ status: contents, attachment_url: spotifyURL },
-		function(error, tweet, response) {
-			if (!error) {
-				console.log(tweet);
-			}
+	twitterClient.post('statuses/update', { status: contents }, function(
+		error,
+		tweet,
+		response
+	) {
+		if (!error) {
+			console.log(tweet);
+		} else {
+			console.log(error);
 		}
-	);
+		res.send(response);
+	});
 });
 
 app.get('/music', function(req, res) {
