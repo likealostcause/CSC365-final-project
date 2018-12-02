@@ -7,7 +7,8 @@ const express = require('express'),
 	passport = require('passport'),
 	FBStrategy = require('passport-facebook'),
 	cookieParser = require('cookie-parser'),
-	session = require('express-session');
+	session = require('express-session'),
+	Twitter = require('twitter');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
@@ -138,6 +139,26 @@ app.get('/get-music', function(req, res) {
 			console.log(getbody);
 		});
 	});
+});
+
+app.post('/tweet', function(req, res) {
+	let twitterClient = new Twitter({
+		consumer_key: auth.twitter.id,
+		consumer_secret: auth.twitter.secret,
+		access_token_key: auth.twitter.token_key,
+		access_token_secret: auth.twitter.token_secret
+	});
+	let spotifyURI = res.body.spotifyUri;
+	let contents = 'Check out this track I just discovered at operecords.com!';
+	twitterClient.post(
+		'statuses/update',
+		{ status: contents, attachment_url: spotifyURI },
+		function(error, tweet, response) {
+			if (!error) {
+				console.log(tweet);
+			}
+		}
+	);
 });
 
 app.get('/music', function(req, res) {
