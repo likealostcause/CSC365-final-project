@@ -3,21 +3,63 @@
 const express = require('express'),
 	app = express(),
 	request = require('request'),
-	auth = require('./config/auth.js');
+	auth = require('./config/auth.js'),
+	passport = require('passport'),
+	FBStrategy = require('passport-facebook');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
 app.use(express.static('resources'));
 
+passport.use(
+	new FBStrategy(
+		{
+			clientID: auth.facebook.id,
+			clientSecret: auth.facebook.secret,
+			callbackURL: 'http://localhost:3000/login/facebook/return'
+		},
+		function(accessToken, refreshToken, profile, done) {
+			console.log(profile);
+			return done(null, profile);
+		}
+	)
+);
+
+passport.serializeUser(function(user, cb) {
+	cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+	cb(null, obj);
+});
+
 app.get('/', function(req, res) {
 	res.render('homepage');
 });
 
-app.get('/login', function(req, res) {
+app.get('/services', function(req, res) {
+	//If logged in, proceed to services
+	if (req.isAuthenticated()) {
+		res.render('services');
+	}
+	//If not logged in, send to login page, which redirects to services when login complete
+	else {
+		res.redirect('/login/facebook');
+	}
+});
+
+app.get('/login/facebook', function(req, res) {
 	res.render('login');
 });
 
+app.get(
+	'/login/facebook/return',
+	passport.authenticate('facebook', { failureRedirect: '/login' }),
+	function(req, res) {
+		res.redirect('/services');
+	}
+);
 // app.post('/login'), function
 
 app.get('/music', function(req, res) {
