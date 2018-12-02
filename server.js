@@ -149,11 +149,12 @@ app.post('/tweet', function(req, res) {
 		access_token_key: auth.twitter.token_key,
 		access_token_secret: auth.twitter.token_secret
 	});
-	let spotifyURI = res.body.spotifyUri;
+	let spotifyURL = req.body.spotifyUrl;
 	let contents = 'Check out this track I just discovered at operecords.com!';
+	console.log('tweet data:', spotifyURL);
 	twitterClient.post(
 		'statuses/update',
-		{ status: contents, attachment_url: spotifyURI },
+		{ status: contents, attachment_url: spotifyURL },
 		function(error, tweet, response) {
 			if (!error) {
 				console.log(tweet);
