@@ -1,6 +1,8 @@
 'use strict';
 
-const getProfile = function(url) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', '/')
-}
+const getProfile = function() {
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', '/');
+};
+
+module.exports = getProfile;
