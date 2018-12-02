@@ -101,7 +101,7 @@ let localStrategies = function(passport) {
 							newUser.facebook.id = profile.id;
 							newUser.facebook.token = profile.token;
 							newUser.facebook.name = profile.displayName;
-							newUser.facebook.email = profile.emails[0].value;
+							//newUser.facebook.email = profile.emails[0].value || null;
 							//save the new user to the DB
 							newUser.save(function(mongoErr) {
 								if (mongoErr) {
