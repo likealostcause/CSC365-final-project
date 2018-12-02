@@ -38,7 +38,8 @@ const getTracks = function(numTracks) {
 			tdName.appendChild(trackAnchor);
 			let button = document.createElement('button');
 			button.appendChild(document.createTextNode('Tweet'));
-			button.setAttribute('onclick', `tweetIt('${trackUrl}')`);
+
+			button.setAttribute('onclick', tweetIt(`${trackUrl}`));
 			let tdTwitterBtn = document.createElement('td');
 			tdTwitterBtn.appendChild(button);
 
@@ -74,15 +75,15 @@ const resetTable = function() {
 	let newThTweet = document.createElement('th');
 	newThTweet.id = 'tweetBtn';
 
-	let textName = document.createTextNode("Name");
+	let textName = document.createTextNode('Name');
 	newThName.appendChild(textName);
 	newTr.appendChild(newThName);
 
-	let textTrack = document.createTextNode("Track Name");
+	let textTrack = document.createTextNode('Track Name');
 	newThTrack.appendChild(textTrack);
 	newTr.appendChild(newThTrack);
 
-	let textTweet = document.createTextNode("Tweet");
+	let textTweet = document.createTextNode('Tweet');
 	newThTweet.appendChild(textTweet);
 	newTr.appendChild(newThTweet);
 
@@ -90,7 +91,6 @@ const resetTable = function() {
 
 	let oldTable = document.querySelector('#dataTable');
 	oldTable.parentNode.replaceChild(newTable, oldTable);
-
 };
 
 document.querySelector('#musicInfo').addEventListener('submit', function(evt) {
@@ -98,8 +98,9 @@ document.querySelector('#musicInfo').addEventListener('submit', function(evt) {
 
 	const input = document.querySelector('#input');
 	let numTracks = input.value;
-	if(numTracks > 15)
+	if (numTracks > 15) {
 		numTracks = 15;
+	}
 
 	input.value = '';
 	getTracks(numTracks);
