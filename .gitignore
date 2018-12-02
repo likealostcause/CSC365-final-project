@@ -2,6 +2,10 @@
 .DS_Store
 spotify_credentials.json
 **/auth.js
+login.js
+test-server.js
+/config
+**/mongoDB_userModel.js
 
 #From GitHub's Node .gitignore
 # Logs
