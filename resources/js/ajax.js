@@ -1,7 +1,7 @@
 'use strict';
 
 const ajax = new XMLHttpRequest();
-ajax.open('GET', 'https://api.spotify.com/v1/recommendations');
+ajax.open('GET', '/get-music?numberOfTracks');
 
 ajax.addEventListener('load', function() {
 	console.log('Finished');
