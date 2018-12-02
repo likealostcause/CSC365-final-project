@@ -5,13 +5,29 @@ const express = require('express'),
 	request = require('request'),
 	auth = require('./config/auth.js'),
 	passport = require('passport'),
-	FBStrategy = require('passport-facebook');
+	FBStrategy = require('passport-facebook'),
+	cookieParser = require('cookie-parser'),
+	session = require('express-session');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
+//middleware configuration
 app.use(express.static('resources'));
-
+app.use(cookieParser()); //read cookies
+app.use(express.json()); // for parsing application/json
+app.use(
+	express.urlencoded({
+		extended: true
+	})
+);
+app.use(
+	session({
+		secret: 'dope!Productions',
+		saveUninitialized: false,
+		resave: false
+	})
+);
 passport.use(
 	new FBStrategy(
 		{
@@ -34,6 +50,9 @@ passport.deserializeUser(function(obj, cb) {
 	cb(null, obj);
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.get('/', function(req, res) {
 	res.render('homepage');
 });
@@ -49,9 +68,23 @@ app.get('/services', function(req, res) {
 	}
 });
 
-app.get('/login/facebook', function(req, res) {
+app.get('/login', function(req, res) {
 	res.render('login');
 });
+
+app.get(
+	'/login/facebook',
+	passport.authenticate('facebook', {
+		scope: [
+			'email',
+			'user_friends',
+			'user_location',
+			'user_likes',
+			'user_tagged_places',
+			'user_birthday'
+		]
+	})
+);
 
 app.get(
 	'/login/facebook/return',
