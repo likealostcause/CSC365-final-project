@@ -38,6 +38,10 @@ app.get('/', function(req, res) {
 	res.render('homepage');
 });
 
+app.get('/about', function(req, res) {
+	res.render('about');
+});
+
 app.get('/services', function(req, res) {
 	//If logged in, proceed to services
 	if (req.isAuthenticated()) {
